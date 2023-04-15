@@ -1,0 +1,157 @@
+﻿@using EntityLayer.Concrete
+@model List<Share>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script>
+
+    $(function () {
+
+        $('#cityId').change(function () {
+
+            var id = $('#cityId').val();
+
+            $.ajax({
+
+                url: '/UserPanelProduct/Districts',
+
+                data: { p: id },
+
+                type: "POST",
+
+                dataType: "Json",
+
+                success: function (data) {
+
+                    console.log(data);
+
+                    $('#districtId').empty();
+
+                    for (var i = 0; i < data.length; i++) {
+
+                        $('#districtId').append("<option value='" + data[i].Value + "'>" + data[i].Text + "</Option>");
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+<br />
+<h2>Kitap Kimin Elinde Mevcut</h2>
+<br />
+
+@*<div style="marging-left:50px">
+        @Html.Label("İller")
+        @Html.DropDownList("cityId", (List<SelectListItem>)ViewBag.valuecityId, "----Şehir Seçin----", new { @class = "form-control col-2" })
+        @Html.Label("İlçeler")
+        @Html.DropDownList("district", (List<SelectListItem>)ViewBag.valueDistrict, "----İlçe Seçin----", new { @class = "form-control col-2" })
+    </div>*@
+<br />
+@using (Html.BeginForm("ReachBook", "UserPanelProduct", FormMethod.Get))
+{
+    <p class="d-flex">
+        @Html.DropDownList("cityId", (List<SelectListItem>)ViewBag.valueCity, "----Şehir Seçin----", new { @class = "form-control col-2" })
+        @Html.DropDownList("districtId", (List<SelectListItem>)ViewBag.valueDistrict, "----İlçe Seçin----", new { @class = "form-control col-2" })
+        <button id="btn-hide" class="btn btn-info" type="submit"><i class="fa fa-search"></i></button>
+    </p>
+}
+<table class="table table-hover table-bordered">
+
+    <tr>
+        <th style="width: 1%">#</th>
+        <th>Kullanıcının Adı</th>
+        <th>Kullanıcının Soyadı</th>
+        <th>Adres</th>
+        <th>İlçe</th>
+        <th>Şehir</th>
+        <th>Ülke</th>
+        <th>Telefon Numarası</th>
+        <th>Mail</th>
+        <th style="width: 15%">Kitabın Resmi</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <button class="btn btn-outline-success btn-block ">@item.ProductId</button>
+                <br /><br />
+                <br /><br /><br />
+            </td>
+            <td>@item.User.UserName</td>
+            <td>@item.User.UserSurName</td>
+            <td>@item.User.Address</td>
+            <td>@item.User.District.DistrictName</td>
+            <td>@item.User.City.CityName</td>
+            <td>@item.User.Country</td>
+            <td>@item.User.PhoneNumber</td>
+            <td>@item.User.UserMail</td>
+            <td style="text-align: center;">
+                <a href="/UserPanelComment/CommentByProduct/@item.ProductId" class="btn btn-light">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <img alt="" class="img-fluid img-fluid" width="100" height="75" src="@item.Product.ProductImage">
+                        </li>
+                    </ul>
+                </a>
+                @*<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal">
+                        Talep Et
+                    </button>*@
+                @*<button class="btn btn-info btn-block">*@
+                @Html.ActionLink("Talep Et", "AddRequest", "UserPanelRequest",
+                    new { _UserId = item.UserId, _ProductId = item.ProductId },
+                    new { @class = "btn btn-primary btn-block" })
+                @*</button>*@
+                @*<a href="/UserPanelRequest/AddRequest/@item.ProductId" class="btn btn-danger btn-block">Talep Et</a>*@
+            </td>
+        </tr>
+    }
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Talep Notunu Giriniz</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                First name:
+                <input type="text" name="firstName" value="@ViewData["FirstName"]" />
+                <br />-->
+@*@{TempData["Data1"] = ViewBag.Data1}*@
+<!--Last name:
+                <input type="text" name="lastName" value=" @ViewData["LastName"]" />
+                <br />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                <a href="/UserPanelComment/CommentByProduct/1" class="btn btn-light">
+            </div>
+        </div>
+    </div>
+</div>-->

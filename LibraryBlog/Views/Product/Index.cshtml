@@ -1,0 +1,54 @@
+﻿@using EntityLayer.Concrete
+@model List<Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+<table class="table table-hover table-bordered">
+    <tr>
+        <th style="width: 1%">#</th>
+        <th>Kitap Adı</th>
+        <th>Kitabın Konusu</th>
+        <th>Kategori</th>
+        <th style="width: 15%">Kitabın Resmi</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <button class="btn btn-success btn-block ">@item.ProductId</button>
+                <br /><br />
+                <a class="btn btn-info btn-sm" href="/Product/EditProduct/@item.ProductId">
+                    <i class="fas fa-pencil-alt">
+                        Düzenle
+                    </i>                    
+                </a>
+                <br /><br /><br />
+                <a class="btn btn-danger btn-sm btn-block" href="/Product/DeleteProduct/@item.ProductId">
+                    <i class="fas fa-trash">
+                        Sil
+                    </i>                    
+                </a>
+            </td>
+            <td>@item.ProductName</td>
+            <td>@item.ProductDescription</td>
+            <td>@item.Category.CategoryName</td>
+            <td style="text-align: center;">
+                <a href="/Comment/CommentByProduct/@item.ProductId" class="btn btn-light">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <img alt="" class="img-fluid" width="100" height="75" src="@item.ProductImage">
+                        </li>
+                    </ul>
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+<a href="/Product/AddProduct" class="btn btn-info">Yeni Kitap Ekle</a>
+
+

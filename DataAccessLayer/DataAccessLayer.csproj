@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C05AEFB6-36C4-4FA0-9DB6-1363D983C7CE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataAccessLayer</RootNamespace>
+    <AssemblyName>DataAccessLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\ICategoryDal.cs" />
+    <Compile Include="Abstract\ICityDal.cs" />
+    <Compile Include="Abstract\ICommentDal.cs" />
+    <Compile Include="Abstract\IDistrictDal.cs" />
+    <Compile Include="Abstract\IEntityRepository.cs" />
+    <Compile Include="Abstract\IHistoryOfProductDal.cs" />
+    <Compile Include="Abstract\IProductDal.cs" />
+    <Compile Include="Abstract\IProductsOfUserDal.cs" />
+    <Compile Include="Abstract\IRequestsOfProductDal.cs" />
+    <Compile Include="Abstract\IShareDal.cs" />
+    <Compile Include="Abstract\IUserDal.cs" />
+    <Compile Include="Abstract\IWriterDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfCategoryDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfCityDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfCommentDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfDistrictDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfEntityRepositoryBase.cs" />
+    <Compile Include="Concrete\EntityFramework\EfHistoryOfProductDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfProductDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfProductsOfUserDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfRequestsOfProductDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfShareDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfUserDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfWriterDal.cs" />
+    <Compile Include="Concrete\LibraryBlogContext.cs" />
+    <Compile Include="Migrations\202208241009415_add_city.cs" />
+    <Compile Include="Migrations\202208241009415_add_city.designer.cs">
+      <DependentUpon>202208241009415_add_city.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208241019528_add_district.cs" />
+    <Compile Include="Migrations\202208241019528_add_district.designer.cs">
+      <DependentUpon>202208241019528_add_district.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208241317509_update-product.cs" />
+    <Compile Include="Migrations\202208241317509_update-product.designer.cs">
+      <DependentUpon>202208241317509_update-product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208241347050_update-product3.cs" />
+    <Compile Include="Migrations\202208241347050_update-product3.designer.cs">
+      <DependentUpon>202208241347050_update-product3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208241432325_update-product4.cs" />
+    <Compile Include="Migrations\202208241432325_update-product4.designer.cs">
+      <DependentUpon>202208241432325_update-product4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208260738406_update_comment.cs" />
+    <Compile Include="Migrations\202208260738406_update_comment.designer.cs">
+      <DependentUpon>202208260738406_update_comment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208260741276_update_comment2.cs" />
+    <Compile Include="Migrations\202208260741276_update_comment2.designer.cs">
+      <DependentUpon>202208260741276_update_comment2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208282012197_add_user_role.cs" />
+    <Compile Include="Migrations\202208282012197_add_user_role.designer.cs">
+      <DependentUpon>202208282012197_add_user_role.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208291407350_writer_about_update.cs" />
+    <Compile Include="Migrations\202208291407350_writer_about_update.designer.cs">
+      <DependentUpon>202208291407350_writer_about_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208311324197_add_productsOfUser.cs" />
+    <Compile Include="Migrations\202208311324197_add_productsOfUser.designer.cs">
+      <DependentUpon>202208311324197_add_productsOfUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209041302447__add_requestOfProducts.cs" />
+    <Compile Include="Migrations\202209041302447__add_requestOfProducts.designer.cs">
+      <DependentUpon>202209041302447__add_requestOfProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209050820336__add_historyOfProduct.cs" />
+    <Compile Include="Migrations\202209050820336__add_historyOfProduct.designer.cs">
+      <DependentUpon>202209050820336__add_historyOfProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209051040440_update_historyOfProduct.cs" />
+    <Compile Include="Migrations\202209051040440_update_historyOfProduct.designer.cs">
+      <DependentUpon>202209051040440_update_historyOfProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209070814431__update_requestStatus.cs" />
+    <Compile Include="Migrations\202209070814431__update_requestStatus.designer.cs">
+      <DependentUpon>202209070814431__update_requestStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209071051220__update_historyStatus.cs" />
+    <Compile Include="Migrations\202209071051220__update_historyStatus.designer.cs">
+      <DependentUpon>202209071051220__update_historyStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209081034362__update_historyStatus1.cs" />
+    <Compile Include="Migrations\202209081034362__update_historyStatus1.designer.cs">
+      <DependentUpon>202209081034362__update_historyStatus1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209081037052__update_historyStatus2.cs" />
+    <Compile Include="Migrations\202209081037052__update_historyStatus2.designer.cs">
+      <DependentUpon>202209081037052__update_historyStatus2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209091057368__update_user.cs" />
+    <Compile Include="Migrations\202209091057368__update_user.designer.cs">
+      <DependentUpon>202209091057368__update_user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209091403431__update_city.cs" />
+    <Compile Include="Migrations\202209091403431__update_city.designer.cs">
+      <DependentUpon>202209091403431__update_city.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209091411352__update_city1.cs" />
+    <Compile Include="Migrations\202209091411352__update_city1.designer.cs">
+      <DependentUpon>202209091411352__update_city1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EntityLayer\EntityLayer.csproj">
+      <Project>{DBE179AF-78AD-42B4-BB68-0A8518EE3DAF}</Project>
+      <Name>EntityLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202208241009415_add_city.resx">
+      <DependentUpon>202208241009415_add_city.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208241019528_add_district.resx">
+      <DependentUpon>202208241019528_add_district.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208241317509_update-product.resx">
+      <DependentUpon>202208241317509_update-product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208241347050_update-product3.resx">
+      <DependentUpon>202208241347050_update-product3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208241432325_update-product4.resx">
+      <DependentUpon>202208241432325_update-product4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208260738406_update_comment.resx">
+      <DependentUpon>202208260738406_update_comment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208260741276_update_comment2.resx">
+      <DependentUpon>202208260741276_update_comment2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208282012197_add_user_role.resx">
+      <DependentUpon>202208282012197_add_user_role.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208291407350_writer_about_update.resx">
+      <DependentUpon>202208291407350_writer_about_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208311324197_add_productsOfUser.resx">
+      <DependentUpon>202208311324197_add_productsOfUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209041302447__add_requestOfProducts.resx">
+      <DependentUpon>202209041302447__add_requestOfProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209050820336__add_historyOfProduct.resx">
+      <DependentUpon>202209050820336__add_historyOfProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209051040440_update_historyOfProduct.resx">
+      <DependentUpon>202209051040440_update_historyOfProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209070814431__update_requestStatus.resx">
+      <DependentUpon>202209070814431__update_requestStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209071051220__update_historyStatus.resx">
+      <DependentUpon>202209071051220__update_historyStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209081034362__update_historyStatus1.resx">
+      <DependentUpon>202209081034362__update_historyStatus1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209081037052__update_historyStatus2.resx">
+      <DependentUpon>202209081037052__update_historyStatus2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209091057368__update_user.resx">
+      <DependentUpon>202209091057368__update_user.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209091403431__update_city.resx">
+      <DependentUpon>202209091403431__update_city.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209091411352__update_city1.resx">
+      <DependentUpon>202209091411352__update_city1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

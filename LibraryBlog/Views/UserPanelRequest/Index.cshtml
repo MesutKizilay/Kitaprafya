@@ -1,0 +1,61 @@
+﻿@using EntityLayer.Concrete
+@model List<RequestsOfProduct>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+<br />
+<h2>Kitabı İsteyenler</h2>
+<br />
+<table class="table table-hover table-bordered">
+
+    <tr>
+        <th style="width: 1%">#</th>
+        <th>Kullanıcının Adı</th>
+        <th>Kullanıcının Soyadı</th>
+        <th>Adres</th>
+        <th>İlçe</th>
+        <th>Şehir</th>
+        <th>Ülke</th>
+        <th>Telefon Numarası</th>
+        <th>Mail</th>
+        <th>Talep Notu</th>
+        <th style="width: 15%">Kitabın Resmi</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <button class="btn btn-outline-success btn-block ">@item.ProductId</button>
+            </td>
+            <td>@item.User.UserName</td>
+            <td>@item.User.UserSurName</td>
+            <td>@item.User.Address</td>
+            <td>@item.User.District.DistrictName</td>
+            <td>@item.User.City.CityName</td>
+            <td>@item.User.Country</td>
+            <td>@item.User.PhoneNumber</td>
+            <td>@item.User.UserMail</td>
+            <td>@item.RequestNote</td>
+
+            <td style="text-align: center;">
+                <a href="/UserPanelComment/CommentByProduct/@item.ProductId" class="btn btn-light">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <img alt="" class="img-fluid img-fluid" width="100" height="75" src="@item.Product.ProductImage">
+                        </li>
+                    </ul>
+                </a>
+                @*<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal">
+                        Talep Et
+                    </button>*@
+                @Html.ActionLink("Talebi Onayla", "AddHistory", "UserPanelHistory", new { _UserId = item.UserId, _ProductId = item.ProductId },
+                new { @class = "btn btn-primary btn-block" })
+            </td>
+        </tr>
+    }
+</table>

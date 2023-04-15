@@ -1,0 +1,44 @@
+﻿@model EntityLayer.Concrete.Product
+@{
+    ViewBag.Title = "AddProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yeni Kitap Ekle</h2>
+<br />
+@using (Html.BeginForm("AddProduct", "Product", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Kitap Adı")
+        @Html.TextBoxFor(x => x.ProductName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.ProductName)
+        <br />
+        @Html.Label("Kitabın Resmi (jpg)")
+        @Html.TextBoxFor(x => x.ProductImage, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.ProductImage)
+        <br />
+        @Html.Label("Kitabın Açıklaması")
+        @Html.TextBoxFor(x => x.ProductDescription, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.ProductDescription)
+        <br />
+        @Html.Label("Kitabın Dili")
+        @Html.TextBoxFor(x => x.Language, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Language)
+        <br />
+        @Html.Label("Kitabın Sayfa Sayısı")
+        @Html.TextBoxFor(x => x.NoOfPage, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.NoOfPage)
+        <br />
+        @Html.Label("Yayınlanma Tarihi")
+        @Html.TextBoxFor(x => x.PublishingDate, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x=>x.PublishingDate)
+        <br />
+        @Html.Label("Kategori")
+        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.valueCategory, new { @class = "form-control" })
+        <br />
+        @Html.Label("Yazar")
+        @Html.DropDownListFor(x => x.WriterId, (List<SelectListItem>)ViewBag.valueWriter, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-info">Kaydet</button>
+    </div>   
+}

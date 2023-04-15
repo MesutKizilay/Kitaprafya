@@ -1,0 +1,92 @@
+﻿@using EntityLayer.Concrete
+@model List<RequestsOfProduct>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    int i = 0;
+}
+@{
+    string color = "";
+    string message = "";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+<br />
+<h2>Kitap Taleplerim</h2>
+<br />
+<table class="table table-hover table-bordered">
+
+    <tr>
+        <th style="width: 1%">#</th>
+        <th>Kullanıcının Adı</th>
+        <th>Kullanıcının Soyadı</th>
+        <th>Adres</th>
+        <th>İlçe</th>
+        <th>Şehir</th>
+        <th>Ülke</th>
+        <th>Telefon Numarası</th>
+        <th>Mail</th>
+        <th>Talep Notu</th>
+        <th style="width: 15%">Kitabın Resmi</th>
+    </tr>
+
+    @*@ViewBag.users[2].UserName*@
+    @foreach (var item in Model)
+    {
+        if (item.OwnerUserId == @ViewBag.users[i].UserId)
+        {
+            if (item.HistoryStatus == true)
+            {
+                color = "alert alert-default-danger text-center";
+                message = "Kitap Geri İsteniyor";
+            }
+            else
+            {
+                if (item.RequestStatus == false)
+                {
+                    color = "alert alert-default-danger text-center";
+                    message = "Bekleniyor";
+                }
+                else
+                {
+                    color = "alert alert-default-success text-center";
+                    message = "Onaylandı! İletişime Geçebilirsiniz";
+                }
+            }
+
+
+            <tr>
+                <td>
+                    <button class="btn btn-outline-success btn-block ">@item.ProductId</button>
+                </td>
+                <td>@ViewBag.users[i].UserName</td>
+                <td>@ViewBag.users[i].UserSurName</td>
+                <td>@ViewBag.users[i].Address</td>
+                <td>@ViewBag.users[i].District.DistrictName</td>
+                <td>@ViewBag.users[i].City.CityName</td>
+                <td>@ViewBag.users[i].Country</td>
+                <td>@ViewBag.users[i].PhoneNumber</td>
+                <td>@ViewBag.users[i].UserMail</td>
+                <td>@item.RequestNote</td>
+
+                <td style="text-align: center;">
+                    <a href="/UserPanelComment/CommentByProduct/@item.ProductId" class="btn btn-light">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <img alt="" class="img-fluid img-fluid" width="100" height="75" src="@item.Product.ProductImage">
+                            </li>
+                        </ul>
+                    </a>
+                    @*<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal">
+                            Talep Et
+                        </button>*@
+                    <div class="@color" role="alert">
+                        @message
+                    </div>
+                </td>
+            </tr>
+        }
+        i++;
+    }
+</table>

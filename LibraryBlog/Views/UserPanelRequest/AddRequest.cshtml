@@ -1,0 +1,24 @@
+﻿@model EntityLayer.Concrete.RequestsOfProduct
+@{
+    ViewBag.Title = "AddProduct";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+@ViewBag.Note
+<h2>Yeni Kitap Ekle</h2>
+@using (Html.BeginForm("AddRequest", "UserPanelRequest", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.OwnerUserId, new { @class = "form-control", @readOnly = true })
+        <br />
+        @Html.HiddenFor(x => x.UserId, new { @class = "form-control", @readOnly = true })
+        <br />
+        @Html.Label("Ürün Id")
+        @Html.TextBoxFor(x => x.ProductId, new { @class = "form-control", @readOnly = true })
+        <br />
+        @Html.Label("Lütfen Talep Notunu Giriniz")
+        @Html.TextBoxFor(x => x.RequestNote, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.RequestNote)
+        <br />
+        <button class="btn btn-info">Kaydet</button>
+    </div>
+}

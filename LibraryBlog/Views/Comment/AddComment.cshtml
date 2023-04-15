@@ -1,0 +1,28 @@
+﻿@model EntityLayer.Concrete.Comment
+@{
+    ViewBag.Title = "AddComment";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yeni Yorum Ekle</h2>
+<br />
+@using (Html.BeginForm("AddComment", "Comment", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Konu")
+        @Html.TextBoxFor(x => x.Subject, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x=>x.Subject)
+        <br />
+        @Html.Label("Yorum İçeriği")
+        @Html.TextBoxFor(x => x.CommentContent, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x=>x.CommentContent)
+        <br />
+        @Html.Label("Kullanıcı Id")
+        @Html.TextBoxFor(x => x.UserId, new { @class = "form-control",@Value= ViewBag.UserId, @readOnly = true })
+        <br />
+        @Html.Label("Kitap Id")
+        @Html.TextBoxFor(x => x.ProductId,new { @class = "form-control", @Value = ViewBag.Id,@readOnly=true })
+        <br />
+        <button class="btn btn-info">Yorum Yap</button>
+    </div>
+}

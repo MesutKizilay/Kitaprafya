@@ -1,0 +1,37 @@
+﻿@using EntityLayer.Concrete
+@model List<Product>
+
+@{
+    ViewBag.Title = "ProductByWriter";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+<table class="table table-hover table-bordered">
+    <tr>
+        <th style="width: 1%">#</th>
+        <th>Kitap Adı</th>
+        <th>Kitabın Konusu</th>
+        <th>Kategori</th>
+        <th style="width: 15%">Kitabın Resmi</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProductId</td>
+            <td>@item.ProductName</td>
+            <td>@item.ProductDescription</td>
+            <td>@item.Category.CategoryName</td>
+            <td style="text-align: center;">
+                <a href="/UserPanelComment/CommentByProduct/@item.ProductId" class="btn btn-light">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <img alt="" class="img-fluid" width="100" height="75" src="@item.ProductImage">
+                        </li>
+                    </ul>
+                </a>
+            </td>
+        </tr>
+    }
+</table>

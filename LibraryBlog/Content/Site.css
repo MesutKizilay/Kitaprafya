@@ -1,0 +1,37 @@
+﻿.sidebar {
+    overflow-y: revert;
+}
+
+.brand-link {
+    padding: 2rem 1rem;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    font-size: 1.75rem;
+}
+
+body {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.user-panel img {
+    height: 34px;
+    width: 34px;
+}
+
+.nav-sidebar > .nav-item .nav-icon.fa, .nav-sidebar > .nav-item .nav-icon.fab, .nav-sidebar > .nav-item .nav-icon.far, .nav-sidebar > .nav-item .nav-icon.fas, .nav-sidebar > .nav-item .nav-icon.glyphicon, .nav-sidebar > .nav-item .nav-icon.ion {
+font-size:1.65rem
+}
+
+
+body {
+    font-weight: 400;
+    color: #212529;
+    line-height: 20px
+}
+
+html {
+    -webkit-tap-highlight-color: transparent;
+}
